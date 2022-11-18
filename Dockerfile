@@ -10,7 +10,7 @@ WORKDIR /data
 
 ARG EAGLERCRAFT_BASE_URL=https://github.com/gunawan092w/eaglercraft
 RUN curl -fsSL ${EAGLERCRAFT_BASE_URL}/archive/refs/heads/main.tar.gz \
-    | tar -C /eaglercraft -zxf
+    | tar -C /eaglercraft -zxf -
 
 ARG MIN_RAM=512M
 ARG MAX_RAM=512M
