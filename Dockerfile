@@ -9,12 +9,14 @@ VOLUME ["/data"]
 WORKDIR /data
 
 ARG EAGLERCRAFT_BASE_URL=https://github.com/gunawan092w/eaglercraft
-RUN curl -fsSL ${EAGLERCRAFT_BASE_URL}/archive/refs/heads/main.tar.gz \
-    | tar -C /data/eaglercraft -zxf -
+RUN mkdir eaglercraft \
+    && curl -fsSL ${EAGLERCRAFT_BASE_URL}/archive/refs/heads/main.tar.gz \
+    | tar -zxf -
 
 ARG MIN_RAM=512M
 ARG MAX_RAM=512M
-RUN java -Xms${MIN_RAM} -Xmx${MAX_RAM} -jar /data/eaglercraft/stable-download/java/bukkit_command/craftbukkit-1.5.2-R1.0.jar
+
+RUN java -Xms${MIN_RAM} -Xmx${MAX_RAM} -jar eaglercraft-main/stable-download/java/bukkit_command/craftbukkit-1.5.2-R1.0.jar
 
 # We manually set the RAM here since it doesn't matter
-RUN java -Xms32M -Xmx32M -jar /data/eaglercraft/stable-download/java/bungee_command/bungee-dist.jar
+RUN java -Xms32M -Xmx32M -jar eaglercraft-main/stable-download/java/bungee_command/bungee-dist.jar
