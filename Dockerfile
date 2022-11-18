@@ -16,7 +16,7 @@ RUN mkdir eaglercraft \
 ARG MIN_RAM=512M
 ARG MAX_RAM=512M
 
-RUN java -Xms${MIN_RAM} -Xmx${MAX_RAM} -jar eaglercraft-main/stable-download/java/bukkit_command/craftbukkit-1.5.2-R1.0.jar
+RUN nohup sh -c java -Xms${MIN_RAM} -Xmx${MAX_RAM} -jar eaglercraft-main/stable-download/java/bukkit_command/craftbukkit-1.5.2-R1.0.jar &
 
 # We manually set the RAM here since it doesn't matter
-RUN java -Xms32M -Xmx32M -jar eaglercraft-main/stable-download/java/bungee_command/bungee-dist.jar
+RUN nohup sh -c java -Xms32M -Xmx32M -jar eaglercraft-main/stable-download/java/bungee_command/bungee-dist.jar &
